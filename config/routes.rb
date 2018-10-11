@@ -2,6 +2,13 @@ Rails.application.routes.draw do
 
   root to: 'products#index'
 
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
 
@@ -11,10 +18,13 @@ Rails.application.routes.draw do
     post   :remove_item
   end
 
-  resource :register, only: [:create, :show] do
-    # get    :register
-    # post   :register
-  end
+  # resource :register, only: [:create, :show] do
+  #   # get    :register
+  #   # post   :register
+  # end
+
+  # resource :login, only: [:create, :show] do
+  # end
 
   resources :orders, only: [:create, :show]
 

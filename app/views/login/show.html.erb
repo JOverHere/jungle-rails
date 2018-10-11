@@ -1,0 +1,15 @@
+<%= form_for :login do |l| %>
+  <p>
+    <%= l.label :email %><br>
+    <%= l.text_field :email %>
+  </p>
+
+  <p>
+    <%= l.label :password %><br>
+    <%= l.text_field :password %>
+  </p>
+
+  <p>
+    <%= l.submit %>
+  </p>
+<% end %>
