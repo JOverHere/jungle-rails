@@ -7,4 +7,8 @@ class Order < ActiveRecord::Base
 
   validates :stripe_charge_id, presence: true
 
+  def send_receipt
+    OrderMailer.send_receipt(id).deliver_letter
+  end
+
 end
