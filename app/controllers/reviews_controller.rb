@@ -1,11 +1,12 @@
 class ReviewsController < ApplicationController
 
    def create
+    puts "test3"
         review = Review.new(
           product_id: params[:product_id],
-          user: current_user,
+          user_id: session[:user_id],
           description: params[:review][:description],
-          rating: params[:rating])
+          rating: params[:review][:rating])
 
          if review.save
           redirect_to product_path(params[:product_id])
@@ -14,11 +15,11 @@ class ReviewsController < ApplicationController
          end
     end
 
-       # def destroy
-       #  @review = Review.find params[:id]
-       #  @review.destroy
-       #  redirect_to product_path(params[:product_id])
-       # end
+       def destroy
+        @review = Review.find params[:id]
+        @review.destroy
+        redirect_to product_path(params[:product_id])
+       end
 
  #   raise "yay, i'm here"
  end
